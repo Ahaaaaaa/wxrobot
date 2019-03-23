@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import werobot
+import re
 import json
 from requests import post
 from punchClock import login
@@ -12,6 +13,8 @@ robot = werobot.WeRoBot(token='wangbin')
 
 @robot.text
 def hello(message):
+    if re.compile("^爱我[吗么]$").match(message.content):
+        return "我爱Holly呀"
     if message.source == "o6Xocs9z1zngjVbn8WZVmlmV1Ukk":
         if message.content == "上班":
             return login(0)
@@ -45,3 +48,5 @@ def image():
 robot.config['HOST'] = '0.0.0.0'
 robot.config['PORT'] = 8080
 # robot.run()
+
+# if app
